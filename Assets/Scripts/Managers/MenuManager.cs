@@ -9,15 +9,19 @@ public class MenuManager : SingletonMono<MenuManager>
 
     public ESceneType GetCurrentScene() => currentScene;
 
-
-	public void NextScene(ESceneType nextScene)
+    public ESceneType GetNextScene()
     {
-		SceneManager.LoadScene(nextScene switch
-        {
-            ESceneType.Title    => "Lobby",
-			ESceneType.Lobby    => "Play",
-			ESceneType.Play     => "Lobby",
-            _                   => "Title"
-		});
+		return currentScene switch
+		{
+			ESceneType.Title => ESceneType.Lobby,
+			ESceneType.Lobby => ESceneType.Play,
+			ESceneType.Play => ESceneType.Lobby,
+			_ => ESceneType.Title
+		};
+	}
+
+	public void NextScene()
+    {
+		SceneManager.LoadScene(GetNextScene().ToString());
 	}    
 }

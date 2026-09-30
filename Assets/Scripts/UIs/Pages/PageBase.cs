@@ -25,7 +25,7 @@ public class PageBase : MonoBehaviour
 		StartCoroutine(FakeLoad());
     }
 
-    void SetButtonCaption(string caption) => _buttonCaption.text = caption;
+    void SetButtonCaption(string caption) => _buttonCaption.text = MenuManager.Singleton.GetNextScene().ToString();
 
     void SetPrompt(string desc)
     {
@@ -65,6 +65,6 @@ public class PageBase : MonoBehaviour
         if (isLoading)
             return;
 
-        MenuManager.Singleton.NextScene(_currentScene);
+        MenuManager.Singleton.NextScene();
     }
 }
