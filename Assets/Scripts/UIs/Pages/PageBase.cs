@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public class PageBase : MonoBehaviour
 {
 	[SerializeField] protected GameObject   _loadingGauge;
-    [SerializeField] protected Image        _loadingFill;
+	[SerializeField] protected GameObject   _goForeground;
+	[SerializeField] protected Image        _loadingFill;
     [SerializeField] protected TMP_Text     _promptText;
 	[SerializeField] protected TextMeshProUGUI _sceneText;
 	[SerializeField] protected TextMeshProUGUI _buttonCaption;
@@ -67,4 +68,22 @@ public class PageBase : MonoBehaviour
 
         MenuManager.Singleton.NextScene();
     }
+
+	public virtual void OnActionPooledButtonClick()
+	{
+		if (isLoading)
+			return;
+
+		MenuManager.Singleton.NextScene(ESceneType.PlayPooled);
+	}
+
+	public virtual void OnActionPooledByManagerButtonClick()
+	{
+		if (isLoading)
+			return;
+
+		MenuManager.Singleton.NextScene(ESceneType.PlayPooledByManager);
+	}
+
+    public GameObject GetForeGround() => _goForeground;
 }

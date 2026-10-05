@@ -4,5 +4,7 @@ public enum ESceneType
 	Title,
 	Lobby,
 	Play,
+	PlayPooled,
+	PlayPooledByManager,
 	end
 }

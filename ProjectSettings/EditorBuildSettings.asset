@@ -14,6 +14,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Play.unity
     guid: c320cfc780b148b42b3e97b10cecc148
+  - enabled: 1
+    path: Assets/Scenes/PlayPooled.unity
+    guid: 48b2de03194ac16b838e668ec3d2ac5e
+  - enabled: 1
+    path: Assets/Scenes/PlayPooledByManager.unity
+    guid: efa2b4f2386f8bd5ea1a1e0fa845d4b4
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
