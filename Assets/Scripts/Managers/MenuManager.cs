@@ -41,6 +41,15 @@ public class MenuManager : SingletonMono<MenuManager>
 		});
 	}
 
+	public void ReloadScene()
+	{
+		BlackOut(1f, () =>
+		{
+			SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+			SwitchIn(1f);
+		});
+	}
+
 	public void BlackOut(float time, Action callback = null) => Fade(0f, 1f, time, callback);
 
 	public void SwitchIn(float time, Action callback = null) => Fade(1f, 0f, time, callback);

@@ -6,5 +6,6 @@ public enum ESceneType
 	Play,
 	PlayPooled,
 	PlayPooledByManager,
+	PlayFSM,
 	end
 }

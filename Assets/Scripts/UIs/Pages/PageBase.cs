@@ -85,5 +85,21 @@ public class PageBase : MonoBehaviour
 		MenuManager.Singleton.NextScene(ESceneType.PlayPooledByManager);
 	}
 
+	public virtual void OnActionCombatButtonClick()
+	{
+		if (isLoading)
+			return;
+
+		MenuManager.Singleton.NextScene(ESceneType.PlayFSM);
+	}
+
+    public virtual void OnActionReset()
+    {
+		if (isLoading)
+			return;
+
+        MenuManager.Singleton.ReloadScene();
+    }
+
     public GameObject GetForeGround() => _goForeground;
 }
