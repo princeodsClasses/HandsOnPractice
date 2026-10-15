@@ -24,6 +24,7 @@ public class PokyDemoController : MonoBehaviour
     private const float AimRayDistance = 20f;  // 카메라 레이 위에서, 이 거리만큼 떨어진 지점을 조준점으로 써요.
     private const float ScreenDeadzoneRadius = 0.12f;  // 뷰포트(0~1) 기준, 화면 중앙에서 이 반경 안이면 룩앳 안 함.
     private const float ScreenDeadzoneFeather = 0.1f;  // 데드존 경계 바깥, 이 폭만큼 부드럽게 램프업.
+    private const float FireLayerBlendSpeed = 8f;      // Fire Layer weight가 0↔1로 초당 이 속도로 블렌딩돼요(즉시 토글 아님).
 
     private Animator _anim;
     private Transform _spineBone;
@@ -33,6 +34,7 @@ public class PokyDemoController : MonoBehaviour
     private int _weaponSlot;
     private bool _isLockedOn;
     private bool _isReloading;
+    private float _fireLayerWeight;
     private float _lookWeight;
     private float _yaw;
     private float _pitch;
@@ -100,6 +102,16 @@ public class PokyDemoController : MonoBehaviour
         HandleMove();
         HandleLockOn();
         HandleReload();
+        UpdateFireLayerWeight();
+    }
+
+    // 락온 중이거나 리로드 중이면 목표 weight는 1, 아니면 0 — 그 값을 바로 때려넣지 않고
+    // 매 프레임 조금씩 따라가게 해서, 0/1 즉시 토글 대신 짧게라도 블렌딩되게 해요.
+    void UpdateFireLayerWeight()
+    {
+        float target = (_isLockedOn || _isReloading) ? 1f : 0f;
+        _fireLayerWeight = Mathf.MoveTowards(_fireLayerWeight, target, FireLayerBlendSpeed * Time.deltaTime);
+        _anim.SetLayerWeight(FireLayerIndex, _fireLayerWeight);
     }
 
     void HandleWeaponSwitch()
@@ -131,13 +143,11 @@ public class PokyDemoController : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             _isLockedOn = true;
-            _anim.SetLayerWeight(FireLayerIndex, 1f);
             _anim.SetTrigger("LockOn");
         }
         else if (Input.GetMouseButtonUp(0))
         {
             _isLockedOn = false;
-            _anim.SetLayerWeight(FireLayerIndex, 0f);
         }
     }
 
@@ -153,7 +163,6 @@ public class PokyDemoController : MonoBehaviour
     IEnumerator ReloadRoutine()
     {
         _isReloading = true;
-        _anim.SetLayerWeight(FireLayerIndex, 1f);
         _anim.SetTrigger("Reload");
 
         // 트랜지션(크로스페이드 0.15초)이 끝나고 실제로 Reload_BTree에 "들어갈 때"까지 먼저 기다려요 —
@@ -171,8 +180,6 @@ public class PokyDemoController : MonoBehaviour
             yield return null;
 
         _isReloading = false;
-        if (!_isLockedOn)
-            _anim.SetLayerWeight(FireLayerIndex, 0f);
     }
 
     // Walk/Run 등 이동 클립에 박혀있는 AnimationEvent("Footstep")가 호출할 리시버.
