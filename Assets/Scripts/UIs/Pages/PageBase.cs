@@ -101,5 +101,13 @@ public class PageBase : MonoBehaviour
         MenuManager.Singleton.ReloadScene();
     }
 
+    public virtual void OnActionNSButton(int type)
+    {
+		if (isLoading)
+			return;
+
+		MenuManager.Singleton.NextScene((ESceneType)type);
+	}
+
     public GameObject GetForeGround() => _goForeground;
 }
