@@ -1021,7 +1021,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8074678800706964054, guid: c09e2325aa5ef0040b3992ccd805aa1c, type: 3}
       propertyPath: m_text
-      value: FSM SO
+      value: FSM CSV
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1709,7 +1709,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8074678800706964054, guid: c09e2325aa5ef0040b3992ccd805aa1c, type: 3}
       propertyPath: m_text
-      value: FSM
+      value: FSM SO
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
