@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CharacterStatsList>
+  <CharacterStats name="Tiger">
+    <hp>80</hp>
+    <bulletDamage>15</bulletDamage>
+    <bulletAngle>5</bulletAngle>
+    <moveSpeedNormal>3.5</moveSpeedNormal>
+    <moveSpeedCombat>2</moveSpeedCombat>
+  </CharacterStats>
+  <CharacterStats name="Lion">
+    <hp>120</hp>
+    <bulletDamage>10</bulletDamage>
+    <bulletAngle>15</bulletAngle>
+    <moveSpeedNormal>2.5</moveSpeedNormal>
+    <moveSpeedCombat>1.2</moveSpeedCombat>
+  </CharacterStats>
+</CharacterStatsList>

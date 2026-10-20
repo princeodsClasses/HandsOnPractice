@@ -1,0 +1,6 @@
+{
+  "list": [
+    { "name": "Tiger", "hp": 80, "bulletDamage": 15, "bulletAngle": 5, "moveSpeedNormal": 3.5, "moveSpeedCombat": 2 },
+    { "name": "Lion", "hp": 120, "bulletDamage": 10, "bulletAngle": 15, "moveSpeedNormal": 2.5, "moveSpeedCombat": 1.2 }
+  ]
+}

@@ -30,10 +30,24 @@ public class Character : MonoBehaviour
     public float MoveSpeedNormal => _moveSpeedNormal;
     public float MoveSpeedCombat => _moveSpeedCombat;
 
-    void Awake()
+    protected virtual void Awake()
     {
-        _maxHp = _hp; // Inspector에 넣은 값을, 최대치로 기억해둬요 — 전투 도주 조건(체력 비율) 판정에 써요.
+        LoadExternalStats(); // 기본은 아무것도 안 해요 — Inspector에 넣은 값 그대로 써요.
+        _maxHp = _hp; // (덮어썼다면) 그 값을, 최대치로 기억해둬요 — 전투 도주 조건(체력 비율) 판정에 써요.
         UpdateHpBar();
+    }
+
+    // 8주차 예제 — ScriptableObject/CSV/XML/JSON 버전은 이 메서드를 오버라이드해서,
+    // Inspector 대신 외부 데이터로 위 5개 스탯을 채워요.
+    protected virtual void LoadExternalStats() { }
+
+    protected void SetStats(float hp, float bulletDamage, float bulletAngle, float moveSpeedNormal, float moveSpeedCombat)
+    {
+        _hp = hp;
+        _bulletDamage = bulletDamage;
+        _bulletAngle = bulletAngle;
+        _moveSpeedNormal = moveSpeedNormal;
+        _moveSpeedCombat = moveSpeedCombat;
     }
 
     public void TakeDamage(float amount)

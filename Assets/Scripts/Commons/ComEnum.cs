@@ -7,6 +7,10 @@ public enum ESceneType
 	PlayPooled,
 	PlayPooledByManager,
 	PlayFSM,
+	PlayFSM_SO,
+	PlayFSM_CSV,
+	PlayFSM_XML,
+	PlayFSM_JSON,
 	PlayFSM2,
 	end
 }

@@ -26,6 +26,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PlayFSM2.unity
     guid: 2651a61e9a51be1449e52d5e6b74020a
+  - enabled: 1
+    path: Assets/Scenes/PlayFSM_SO.unity
+    guid: 41521b443b1ea4f41bf201da27cc19c5
+  - enabled: 1
+    path: Assets/Scenes/PlayFSM_CSV.unity
+    guid: ed54184d67ae03d42bc22641a05429d7
+  - enabled: 1
+    path: Assets/Scenes/PlayFSM_XML.unity
+    guid: 78312d9a20c8b7e42b4c4a19a97bd47d
+  - enabled: 1
+    path: Assets/Scenes/PlayFSM_JSON.unity
+    guid: fab958e726fc53b48aa54bb90b581cbb
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
