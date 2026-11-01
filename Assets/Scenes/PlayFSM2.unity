@@ -1016,6 +1016,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PagePlayFSM2
       objectReference: {fileID: 0}
+    - target: {fileID: 8123129795627260826, guid: cceab2c0a50d42b4aab499168cac2c40, type: 3}
+      propertyPath: _currentScene
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 8439772678885579213, guid: cceab2c0a50d42b4aab499168cac2c40, type: 3}

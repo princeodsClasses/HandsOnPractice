@@ -19,6 +19,7 @@ public class PageBase : MonoBehaviour
     protected virtual void Start()
     {
         MenuManager.Singleton.currentScene = _currentScene;
+        AudioManager.Singleton.ChangeAudioMixSnapshot(_currentScene);
         SetSceneName();
         SetPrompt(_currentScene == ESceneType.Play ? "플레이 중" : $"{_currentScene} 신에서 프로세스 진행 중입니다");
         SetButtonCaption($"{MenuManager.Singleton.GetCurrentScene().ToString()}");

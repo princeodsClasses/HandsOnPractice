@@ -183,10 +183,10 @@ public class PokyDemoController : MonoBehaviour
     }
 
     // Walk/Run 등 이동 클립에 박혀있는 AnimationEvent("Footstep")가 호출할 리시버.
-    // 발소리 SFX는 아직 안 붙여서 받기만 하고 그냥 리턴.
     void Footstep()
     {
-        Debug.Log("탁");
+		Debug.Log("탁");
+		AudioManager.Singleton.PlaySFX("footstep");
     }
 
     // 락온 중엔 상체(Spine1)가 마우스 포인터 방향을 향하도록, Animator가 포즈를 다 그린 "뒤"(LateUpdate)에
