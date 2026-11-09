@@ -14,6 +14,20 @@ AudioMixerEffectController:
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0
+--- !u!245 &-7684090768172454739
+AudioMixerSnapshotController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Lobby
+  m_AudioMixer: {fileID: 24100000}
+  m_SnapshotID: a8d983f23bec90f488ae6e06e789d6b5
+  m_FloatValues:
+    394cf391d99841e46ac820194fab0f3d: 0
+    ad2927aa259216241ad77cb3d3eea0d4: 0
+    0ca0e4da8cac11446855f4d26ce22e4b: 0.8772599
+  m_TransitionOverrides: {}
 --- !u!243 &-4773238721061137349
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
@@ -63,6 +77,8 @@ AudioMixerController:
   m_MasterGroup: {fileID: 24300002}
   m_Snapshots:
   - {fileID: 24500006}
+  - {fileID: -7684090768172454739}
+  - {fileID: 6120679685631654671}
   m_StartSnapshot: {fileID: 24500006}
   m_SuspendThreshold: -80
   m_EnableSuspend: 1
@@ -75,7 +91,7 @@ AudioMixerController:
     - e44cd7d817b1a134b9e643a8521cc706
     name: View
   m_CurrentViewIndex: 0
-  m_TargetSnapshot: {fileID: 24500006}
+  m_TargetSnapshot: {fileID: 6120679685631654671}
 --- !u!243 &24300002
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
@@ -120,7 +136,10 @@ AudioMixerSnapshotController:
   m_Name: Default
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: c825c0ebce267b94e96c81d9194fd2fb
-  m_FloatValues: {}
+  m_FloatValues:
+    394cf391d99841e46ac820194fab0f3d: 0
+    ad2927aa259216241ad77cb3d3eea0d4: 0
+    0ca0e4da8cac11446855f4d26ce22e4b: 0.8772599
   m_TransitionOverrides: {}
 --- !u!244 &4395143182870336722
 AudioMixerEffectController:
@@ -136,3 +155,17 @@ AudioMixerEffectController:
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0
+--- !u!245 &6120679685631654671
+AudioMixerSnapshotController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Fireworks
+  m_AudioMixer: {fileID: 24100000}
+  m_SnapshotID: 49e9c4e0856a61541a7ce44dec3e0486
+  m_FloatValues:
+    394cf391d99841e46ac820194fab0f3d: -3
+    ad2927aa259216241ad77cb3d3eea0d4: 0
+    0ca0e4da8cac11446855f4d26ce22e4b: 0.8772599
+  m_TransitionOverrides: {}

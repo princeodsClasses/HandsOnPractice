@@ -1,0 +1,70 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class FireworksController : MonoBehaviour
+{
+    [SerializeField] AudioClip _bgmClip;
+    [SerializeField] Phase[] _phases;
+
+    List<GameObject> _liParticlaList = new List<GameObject>();
+
+    private void Start()
+    {
+        float bgmLength = 0f;
+        if (_bgmClip != null)
+        {
+            AudioManager.Singleton.PlayBGM(_bgmClip.name);
+            bgmLength = _bgmClip.length;
+        }
+
+        StartCoroutine(PlayBGM(bgmLength));
+        StartCoroutine(PlayPhases());
+    }
+
+    IEnumerator PlayBGM(float time)
+    {
+        yield return new WaitForSecondsRealtime(time + 10);
+
+        /*
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
+        */
+    }
+
+    IEnumerator PlayPhases()
+    {
+        float totalTime = 0;
+
+        foreach (Phase phase in _phases)
+        {
+            yield return new WaitForSecondsRealtime(phase._fStartTime - totalTime);
+            totalTime = phase._fStartTime;
+
+            PlayCurrentParticleSystems(phase);
+        }
+    }
+
+    void PlayCurrentParticleSystems(Phase currentPhase)
+    {
+        _liParticlaList.ForEach(p => p.GetComponent<ParticleSystem>().Stop());
+
+        foreach (ParticleSystem particleSystem in currentPhase._pFireworks)
+        {
+            GameObject particleSystemObj = Instantiate(particleSystem.gameObject, Vector3.zero, Quaternion.identity);
+            _liParticlaList.Add(particleSystemObj);
+            particleSystemObj.GetComponent<ParticleSystem>().Play();
+        }
+    }
+}
+
+[Serializable]
+public class Phase
+{
+    public float _fStartTime;
+    public ParticleSystem[] _pFireworks;
+}

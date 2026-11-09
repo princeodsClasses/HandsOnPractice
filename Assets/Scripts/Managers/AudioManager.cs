@@ -5,14 +5,15 @@ using UnityEngine.Audio;
 
 public class AudioManager : SingletonMono<AudioManager>
 {
-	[SerializeField] AudioMixer audioMixer;
-	[SerializeField] AudioMixerGroup bgmMixerGroup;
-	[SerializeField] AudioMixerGroup sfxMixerGroup;
+	AudioMixer audioMixer;
+	AudioMixerGroup bgmMixerGroup;
+	AudioMixerGroup sfxMixerGroup;
 
 	const int MAX_COUNT_BGM = 2;
 	const int MAX_COUNT_SFX = 20;
 	const string BGM_PATH = "Audios/BGMs/";
 	const string SFX_PATH = "Audios/SFXs/";
+	const string MIXER_PATH = "Audios/NewAudioMixer";
 
 	AudioSource[] _asBGM;
 	List<AudioSource> _sfxAudioSources;
@@ -33,6 +34,10 @@ public class AudioManager : SingletonMono<AudioManager>
 
 	void ReadyAudio()
 	{
+		audioMixer = Resources.Load<AudioMixer>(MIXER_PATH);
+		bgmMixerGroup = audioMixer.FindMatchingGroups("BGM")[0];
+		sfxMixerGroup = audioMixer.FindMatchingGroups("SFX")[0];
+
 		_asBGM = new AudioSource[MAX_COUNT_BGM];
 		for (int i = 0; i < MAX_COUNT_BGM; i++)
 		{
@@ -52,6 +57,9 @@ public class AudioManager : SingletonMono<AudioManager>
 			source.playOnAwake = false;
 			source.loop = false;
 			source.outputAudioMixerGroup = sfxMixerGroup;
+			source.rolloffMode = AudioRolloffMode.Linear;
+			source.minDistance = 1f;
+			source.maxDistance = 250f;
 			_sfxAudioSources.Add(source);
 		}
 	}
@@ -88,7 +96,11 @@ public class AudioManager : SingletonMono<AudioManager>
 
 		if (_asBGM[_playingChannel].clip == clip) return;
 
-		if (_coChangeBGM != null) StopCoroutine(_coChangeBGM);
+		if (_coChangeBGM != null)
+		{
+			StopCoroutine(_coChangeBGM);
+			_asBGM[1 - _playingChannel].Stop();
+		}
 		_coChangeBGM = StartCoroutine(CoChangeBGM(clip, fadeTime));
 	}
 
@@ -160,21 +172,21 @@ public class AudioManager : SingletonMono<AudioManager>
 		return null;
 	}
 
-	public void PlaySFX(string clipName, float delay = 0f)
+	public void PlaySFX(string clipName, float delay = 0f, float pitch = 1f)
 	{
 		AudioClip clip = LoadClip(SFX_PATH, clipName);
 		if (clip == null) return;
-		StartCoroutine(CoPlaySFX(clip, delay, Vector3.zero, false));
+		StartCoroutine(CoPlaySFX(clip, delay, Vector3.zero, false, pitch));
 	}
 
-	public void PlaySFX3D(string clipName, Vector3 position, float delay = 0f)
+	public void PlaySFX3D(string clipName, Vector3 position, float delay = 0f, float pitch = 1f)
 	{
 		AudioClip clip = LoadClip(SFX_PATH, clipName);
 		if (clip == null) return;
-		StartCoroutine(CoPlaySFX(clip, delay, position, true));
+		StartCoroutine(CoPlaySFX(clip, delay, position, true, pitch));
 	}
 
-	IEnumerator CoPlaySFX(AudioClip clip, float delay, Vector3 position, bool is3D)
+	IEnumerator CoPlaySFX(AudioClip clip, float delay, Vector3 position, bool is3D, float pitch)
 	{
 		if (delay > 0f) yield return new WaitForSeconds(delay);
 
@@ -184,6 +196,7 @@ public class AudioManager : SingletonMono<AudioManager>
 		source.Stop();
 		source.clip = clip;
 		source.volume = _muted ? 0f : _sfxVolume;
+		source.pitch = pitch;
 		source.spatialBlend = is3D ? 1f : 0f;
 		source.transform.position = position;
 		source.Play();

@@ -12,5 +12,7 @@ public enum ESceneType
 	PlayFSM_XML,
 	PlayFSM_JSON,
 	PlayFSM2,
+	Fireworks,
+	PlayRainy,
 	end
 }
