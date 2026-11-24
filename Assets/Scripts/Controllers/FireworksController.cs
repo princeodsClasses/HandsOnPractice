@@ -15,7 +15,6 @@ public class FireworksController : MonoBehaviour
         float bgmLength = 0f;
         if (_bgmClip != null)
         {
-            AudioManager.Singleton.PlayBGM(_bgmClip.name);
             bgmLength = _bgmClip.length;
         }
 

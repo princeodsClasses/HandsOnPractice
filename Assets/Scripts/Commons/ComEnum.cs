@@ -14,5 +14,6 @@ public enum ESceneType
 	PlayFSM2,
 	Fireworks,
 	PlayRainy,
+	Bridge,
 	end
 }

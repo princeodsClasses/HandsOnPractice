@@ -9,6 +9,9 @@ public class MenuManager : SingletonMono<MenuManager>
 {
     public ESceneType currentScene { get; set; } = ESceneType.NONE;
 
+    // 백그라운드 로드(브릿지 신)를 거칠 때, 브릿지 신이 어떤 신을 async로 로드해야 하는지 전달하는 용도
+    public ESceneType pendingScene { get; private set; } = ESceneType.NONE;
+
     public string GetCurrentSceneName() => SceneManager.GetActiveScene().name;
 
     public ESceneType GetCurrentScene() => currentScene;
@@ -32,6 +35,20 @@ public class MenuManager : SingletonMono<MenuManager>
 	public void NextScene(ESceneType scene)
 	{
 		BlackOut(1f, () => StartCoroutine(LoadAndSwitchIn(scene.ToString())));
+	}
+
+	// loadInBackground가 true면, Bridge 신에서 progress 게이지를 보여주며 scene을 async로 로드해요.
+	// false면 기존 방식(동기 로드) 그대로 동작해요.
+	public void NextScene(ESceneType scene, bool loadInBackground)
+	{
+		if (!loadInBackground)
+		{
+			NextScene(scene);
+			return;
+		}
+
+		pendingScene = scene;
+		BlackOut(1f, () => StartCoroutine(LoadAndSwitchIn(ESceneType.Bridge.ToString())));
 	}
 
 	public void ReloadScene()

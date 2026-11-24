@@ -4869,7 +4869,6 @@ GameObject:
   - component: {fileID: 4777862695058842}
   - component: {fileID: 198412147619454646}
   - component: {fileID: 199269501661187524}
-  - component: {fileID: 1338738128847191645}
   - component: {fileID: 9112233445566002}
   m_Layer: 0
   m_Name: ExplosionFlash
@@ -9764,22 +9763,6 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &1338738128847191645
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1487197145818938}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4fe02f10452e7247acfa6f5ef6a63ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fireClipNames:
-  - ExplosionRev01
-  pitchMin: 0.75
-  pitchMax: 1.25
 --- !u!114 &9112233445566002
 MonoBehaviour:
   m_ObjectHideFlags: 0

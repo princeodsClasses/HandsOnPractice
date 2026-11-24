@@ -4844,7 +4844,6 @@ GameObject:
   - component: {fileID: 466700}
   - component: {fileID: 19866700}
   - component: {fileID: 19966700}
-  - component: {fileID: 7231662050220965904}
   - component: {fileID: 9112233445566007}
   m_Layer: 0
   m_Name: Explosion
@@ -9809,22 +9808,6 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &7231662050220965904
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 166700}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4fe02f10452e7247acfa6f5ef6a63ab, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
-  fireClipNames:
-  - SmallExDevris
-  pitchMin: 0.75
-  pitchMax: 1.25
 --- !u!114 &9112233445566007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -53210,7 +53193,6 @@ GameObject:
   - component: {fileID: 7617616364162773374}
   - component: {fileID: 8009349350704271569}
   - component: {fileID: 4787649396445001971}
-  - component: {fileID: 5237517819311950377}
   - component: {fileID: 9112233445566008}
   m_Layer: 0
   m_Name: Explosion
@@ -58175,22 +58157,6 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &5237517819311950377
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7017861603473817912}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4fe02f10452e7247acfa6f5ef6a63ab, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
-  fireClipNames:
-  - SmallExDevris
-  pitchMin: 0.75
-  pitchMax: 1.25
 --- !u!114 &9112233445566008
 MonoBehaviour:
   m_ObjectHideFlags: 0

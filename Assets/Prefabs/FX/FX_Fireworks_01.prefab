@@ -4844,7 +4844,6 @@ GameObject:
   - component: {fileID: 400000}
   - component: {fileID: 19800000}
   - component: {fileID: 19900000}
-  - component: {fileID: 4562830771160798248}
   m_Layer: 0
   m_Name: Big Glow
   m_TagString: Untagged
@@ -9591,22 +9590,6 @@ ParticleSystemRenderer:
   m_MeshWeighting1: 1
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
---- !u!114 &4562830771160798248
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 100002}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4fe02f10452e7247acfa6f5ef6a63ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fireClipNames:
-  - ExplosionRev01
-  pitchMin: 0.75
-  pitchMax: 1.25
 --- !u!1 &100004
 GameObject:
   m_ObjectHideFlags: 0
